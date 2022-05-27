@@ -4,7 +4,7 @@
 #
 Name     : pypi-googleapis_common_protos
 Version  : 1.56.2
-Release  : 25
+Release  : 26
 URL      : https://files.pythonhosted.org/packages/ac/4c/e7d3641f5dc618d4a569647e589675bb65f4b826feaf451a38d12a1aae99/googleapis-common-protos-1.56.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/ac/4c/e7d3641f5dc618d4a569647e589675bb65f4b826feaf451a38d12a1aae99/googleapis-common-protos-1.56.2.tar.gz
 Summary  : Common protobufs used in Google APIs
@@ -13,9 +13,8 @@ License  : Apache-2.0
 Requires: pypi-googleapis_common_protos-license = %{version}-%{release}
 Requires: pypi-googleapis_common_protos-python = %{version}-%{release}
 Requires: pypi-googleapis_common_protos-python3 = %{version}-%{release}
-Requires: protobuf
 BuildRequires : buildreq-distutils3
-BuildRequires : protobuf
+BuildRequires : pypi(protobuf)
 
 %description
 # Google APIs common protos
@@ -42,6 +41,8 @@ python components for the pypi-googleapis_common_protos package.
 Summary: python3 components for the pypi-googleapis_common_protos package.
 Group: Default
 Requires: python3-core
+Provides: pypi(googleapis_common_protos)
+Requires: pypi(protobuf)
 
 %description python3
 python3 components for the pypi-googleapis_common_protos package.
@@ -50,13 +51,16 @@ python3 components for the pypi-googleapis_common_protos package.
 %prep
 %setup -q -n googleapis-common-protos-1.56.2
 cd %{_builddir}/googleapis-common-protos-1.56.2
+pushd ..
+cp -a googleapis-common-protos-1.56.2 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1653610358
+export SOURCE_DATE_EPOCH=1653665357
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -68,6 +72,15 @@ export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
+pushd ../buildavx2/
+export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3 "
+export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
+python3 setup.py build
+
+popd
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
@@ -77,6 +90,15 @@ python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
+pushd ../buildavx2/
+export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3 "
+export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
+python3 -tt setup.py build install --root=%{buildroot}-v3
+popd
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
