@@ -1,5 +1,5 @@
 PKG_NAME := pypi-googleapis_common_protos
-URL = https://files.pythonhosted.org/packages/41/43/613cbd071413f6b2a3427f905bc8a8f0f3da202a6e715d78aa22b1f35271/googleapis-common-protos-1.58.0.tar.gz
+URL = https://files.pythonhosted.org/packages/9a/19/02a6256e00653b0fec9f356678df0ed996cb9d89aeb472c8c4df9490cac0/googleapis-common-protos-1.59.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
