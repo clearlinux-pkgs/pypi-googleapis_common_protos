@@ -4,10 +4,10 @@
 # Using build pattern: distutils3
 #
 Name     : pypi-googleapis_common_protos
-Version  : 1.59.1
-Release  : 40
-URL      : https://files.pythonhosted.org/packages/28/9b/ea531afe585da044686ab13351c99dfbb2ca02b96c396874946d52d0e127/googleapis-common-protos-1.59.1.tar.gz
-Source0  : https://files.pythonhosted.org/packages/28/9b/ea531afe585da044686ab13351c99dfbb2ca02b96c396874946d52d0e127/googleapis-common-protos-1.59.1.tar.gz
+Version  : 1.60.0
+Release  : 41
+URL      : https://files.pythonhosted.org/packages/08/78/aedf7f323cc6d4f2116556bd42c9ffab6021cf3f2fd9925ed4e71213dd1b/googleapis-common-protos-1.60.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/08/78/aedf7f323cc6d4f2116556bd42c9ffab6021cf3f2fd9925ed4e71213dd1b/googleapis-common-protos-1.60.0.tar.gz
 Summary  : Common protobufs used in Google APIs
 Group    : Development/Tools
 License  : Apache-2.0
@@ -55,10 +55,10 @@ python3 components for the pypi-googleapis_common_protos package.
 
 
 %prep
-%setup -q -n googleapis-common-protos-1.59.1
-cd %{_builddir}/googleapis-common-protos-1.59.1
+%setup -q -n googleapis-common-protos-1.60.0
+cd %{_builddir}/googleapis-common-protos-1.60.0
 pushd ..
-cp -a googleapis-common-protos-1.59.1 buildavx2
+cp -a googleapis-common-protos-1.60.0 buildavx2
 popd
 
 %build
@@ -66,7 +66,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1686668720
+export SOURCE_DATE_EPOCH=1690900106
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
