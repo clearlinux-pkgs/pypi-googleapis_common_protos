@@ -6,10 +6,10 @@
 # autospec commit: f35655a
 #
 Name     : pypi-googleapis_common_protos
-Version  : 1.64.0
-Release  : 50
-URL      : https://files.pythonhosted.org/packages/4f/33/48436e504d81629c7e9d2731c8dcc1e0736220175eb8eef0d1b237a7e4fc/googleapis_common_protos-1.64.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/4f/33/48436e504d81629c7e9d2731c8dcc1e0736220175eb8eef0d1b237a7e4fc/googleapis_common_protos-1.64.0.tar.gz
+Version  : 1.65.0
+Release  : 51
+URL      : https://files.pythonhosted.org/packages/53/3b/1599ceafa875ffb951480c8c74f4b77646a6b80e80970698f2aa93c216ce/googleapis_common_protos-1.65.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/53/3b/1599ceafa875ffb951480c8c74f4b77646a6b80e80970698f2aa93c216ce/googleapis_common_protos-1.65.0.tar.gz
 Summary  : Common protobufs used in Google APIs
 Group    : Development/Tools
 License  : Apache-2.0
@@ -57,10 +57,10 @@ python3 components for the pypi-googleapis_common_protos package.
 
 
 %prep
-%setup -q -n googleapis_common_protos-1.64.0
-cd %{_builddir}/googleapis_common_protos-1.64.0
+%setup -q -n googleapis_common_protos-1.65.0
+cd %{_builddir}/googleapis_common_protos-1.65.0
 pushd ..
-cp -a googleapis_common_protos-1.64.0 buildavx2
+cp -a googleapis_common_protos-1.65.0 buildavx2
 popd
 
 %build
@@ -68,7 +68,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1724714594
+export SOURCE_DATE_EPOCH=1724778097
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
