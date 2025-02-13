@@ -7,7 +7,7 @@
 #
 Name     : pypi-googleapis_common_protos
 Version  : 1.67.0
-Release  : 54
+Release  : 55
 URL      : https://files.pythonhosted.org/packages/31/e1/fbffb85a624f1404133b5bb624834e77e0f549e2b8548146fe18c56e1411/googleapis_common_protos-1.67.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/31/e1/fbffb85a624f1404133b5bb624834e77e0f549e2b8548146fe18c56e1411/googleapis_common_protos-1.67.0.tar.gz
 Summary  : Common protobufs used in Google APIs
