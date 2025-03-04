@@ -7,7 +7,7 @@
 #
 Name     : pypi-googleapis_common_protos
 Version  : 1.69.0
-Release  : 58
+Release  : 59
 URL      : https://files.pythonhosted.org/packages/c2/92/6bb11dad062ad7cc40665d0a8986193d54f1a0032b510e84e7182df9e661/googleapis_common_protos-1.69.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/c2/92/6bb11dad062ad7cc40665d0a8986193d54f1a0032b510e84e7182df9e661/googleapis_common_protos-1.69.0.tar.gz
 Summary  : Common protobufs used in Google APIs
@@ -66,7 +66,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1741124767
+export SOURCE_DATE_EPOCH=1741125155
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -128,9 +128,9 @@ FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS -march=x86-64-v3 "
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS -march=x86-64-v3 "
 python3 -m installer --destdir=%{buildroot}-v3 dist/*.whl
 popd
-## Remove excluded files
-rm -f %{buildroot}*/usr/lib/python3.*/site-packages/docs/__pycache__/conf.cpython-3*.pyc
-rm -f %{buildroot}*/usr/lib/python3.*/site-packages/docs/conf.py
+## install_append content
+rm -fr %{buildroot}/usr/lib/python3.*/site-packages/docs
+## install_append end
 /usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
